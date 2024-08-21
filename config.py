@@ -21,7 +21,7 @@ listening_port = 8081
 # to produce the actual cost during a run. My kiln has three
 # elements that when my switches are set to high, consume 9460 watts.
 kwh_rate        = 0.1319  # cost per kilowatt hour per currency_type to calculate cost to run job
-kw_elements     = 9.460 # if the kiln elements are on, the wattage in kilowatts
+kw_elements     = 4.320 # if the kiln elements are on, the wattage in kilowatts
 currency_type   = "$"   # Currency Symbol to show when calculating cost to run job
 
 ########################################################################
@@ -89,7 +89,7 @@ try:
     spi_cs    = board.D22    #spi Chip Select
     spi_mosi  = board.D10    #spi Microcomputer Out Serial In (not connected) 
     gpio_heat = board.D23    #output that controls relay
-    gpio_heat_invert = False #invert the output state
+    gpio_heat_invert = True  #invert the output state
 except (NotImplementedError,AttributeError):
     print("not running on blinka recognized board, probably a simulation")
 
@@ -155,7 +155,7 @@ stop_integral_windup = True
 ########################################################################
 #
 #   Simulation parameters
-simulate = True
+simulate = False
 sim_t_env      = 65   # deg
 sim_c_heat     = 500.0  # J/K  heat capacity of heat element
 sim_c_oven     = 5000.0 # J/K  heat capacity of oven
